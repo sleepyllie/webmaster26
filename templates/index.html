@@ -3,10 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style.css" />
-    <title>Document</title>
+    <title>North Alabama Community Resource Hub</title>
+    <meta name="description" content="Discover non-profits, support services, events, and programs available in Madison, Huntsville, and Northern Alabama.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <span class="logo-icon">&#10022;</span>
+                    <h1>Community Hub</h1>
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="#spotlights">Spotlights</a>
+                    <a href="#directory">Directory</a>
+                    <a href="#submit">Submit</a>
+                    <a href="#about">About</a>
+                    <a href="/learn">Learn</a>
+                    <a href="/references">References</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <img src="{{ url_for('static', filename='images/huntsvilleAL.jpg') }}" alt="Big Spring Park, Huntsville Alabama" class="hero-bg-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-shapes">
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+        </div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="container hero-content">
+            <h2 class="hero-title aurora-text">
+                <span class="aurora-text-content">North Alabama Community Resource Hub</span>
+            </h2>
+            <p class="hero-subtitle float-text">Connecting residents with the non-profits, support services, events, and programs that make Northern Alabama stronger.</p>
+            <a href="#directory" class="btn btn-primary btn-large hero-cta pulse-btn">Explore Resources</a>
+        </div>
+    </section>
+
+    <!-- Spotlights Section -->
+    <section id="spotlights" class="spotlights">
+        <div class="container">
+            <div data-aos="zoom-out">
+                <p class="section-label reveal">Featured Resources</p>
+                <h2 class="section-title reveal">Community Spotlights</h2>
+                <p class="section-subtitle reveal">Hand-picked organizations making a meaningful difference in the lives of Northern Alabama residents every single day.</p>
+            </div>
+
+            <div class="spotlight-grid" id="spotlight-container" data-aos="fade-up">
+                {% for spot in spotlights %}
+                <div class="spotlight-card">
+                    <div class="spotlight-badge">Featured</div>
+                    <h3>{{ spot.name }}</h3>
+                    <span class="category-tag">{{ spot.category }}</span>
+                    <p>{{ spot.description }}</p>
+                    <div class="spotlight-details">
+                        {% if spot.address %}
+                        <p><strong>Address:</strong> {{ spot.address }}</p>
+                        {% endif %}
+                        {% if spot.contact %}
+                        <p><strong>Phone:</strong> {{ spot.contact }}</p>
+                        {% endif %}
+                    </div>
+                    {% if spot.website %}
+                    <a href="{{ spot.website }}" target="_blank" rel="noopener" class="btn btn-secondary">Visit Website</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Directory Section -->
+    <section id="directory" class="directory">
+        <div class="container">
+            <div data-aos="zoom-out">
+            <p class="section-label reveal">Resource Directory</p>
+            <h2 class="section-title reveal">Find What You Need</h2>
+            <p class="section-subtitle reveal">Search nonprofits by keyword and filter by category. Results are pulled live from the ProPublica Nonprofit Explorer API and combined with community-submitted resources.</p>
+            </div>
+            <!-- Search & Filter -->
+            <div class="search-filters reveal">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search for food banks, healthcare, education..." aria-label="Search resources">
+                    <button id="search-btn" class="btn btn-primary">Search</button>
+                </div>
+                <div class="filter-row">
+                    <select id="category-filter" aria-label="Filter by category">
+                        <option value="">All Categories</option>
+                        {% for cat in categories %}
+                        <option value="{{ cat }}">{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                    <button id="clear-filters" class="btn btn-outline">Clear Filters</button>
+                </div>
+            </div>
+            
+            <!-- Results Count -->
+            <p class="results-count" id="results-count">Loading resources...</p>
+            
+            <!-- Resource Grid -->
+            <div class="resource-grid" id="resource-container" data-aos="zoom-in-up">
+                <!-- Resources loaded via jQuery -->
+            </div>
+            
+            <!-- Load More -->
+            <div class="load-more-container">
+                <button id="load-more" class="btn btn-outline btn-large" style="display: none;">Load More Resources</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Resource Section -->
+    <section id="submit" class="submit-section">
+        <div class="container">
+            <p class="section-label reveal">Contribute</p>
+            <h2 class="section-title reveal">Suggest a Resource</h2>
+            <p class="section-subtitle reveal">Know of a non-profit, service, or program that should be listed here? Fill out this form and it will be added to the directory alongside API results.</p>
+            
+            <form id="submit-form" class="submit-form reveal">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resource-name">Resource Name *</label>
+                        <input type="text" id="resource-name" name="name" required placeholder="e.g., Sunrise Food Bank">
+                    </div>
+                    <div class="form-group">
+                        <label for="resource-category">Category *</label>
+                        <select id="resource-category" name="category" required>
+                            <option value="">Select a category...</option>
+                            {% for cat in categories %}
+                            <option value="{{ cat }}">{{ cat }}</option>
+                            {% endfor %}
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resource-description">Description *</label>
+                    <textarea id="resource-description" name="description" rows="3" required placeholder="Briefly describe what this resource offers..."></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="resource-contact">Contact (Phone or Email) *</label>
+                        <input type="text" id="resource-contact" name="contact" required placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="resource-address">Address</label>
+                        <input type="text" id="resource-address" name="address" placeholder="123 Main St, City, AL">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resource-website">Website</label>
+                    <input type="url" id="resource-website" name="website" placeholder="https://...">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Submit Resource</button>
+                
+                <div id="form-message" class="form-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <p class="section-label reveal">About This Hub</p>
+            <h2 class="section-title reveal">Strengthening Our Community</h2>
+            <p class="section-subtitle reveal">This resource hub is maintained by and for our community. Here's how you can make the most of it.</p>
+            
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <p>The North Alabama Community Resource Hub connects residents of Madison, Huntsville, Decatur, and surrounding communities with vital local resources they need to thrive.</p>
+                    <p>Our directory includes nonprofits, support services, food assistance, housing programs, healthcare resources, educational opportunities, and community events throughout the Tennessee Valley region.</p>
+                    <p>This hub is maintained for the benefit of our community. If you know of a resource that should be included, please use the submission form above. Together, we can ensure everyone in Northern Alabama has access to the support they need.</p>
+                </div>
+                <div class="about-stats reveal">
+                    <div class="stat-card">
+                        <span class="stat-number" id="total-resources">--</span>
+                        <span class="stat-label">Resources Listed</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">{{ categories|length }}</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">{{ spotlights|length }}</span>
+                        <span class="stat-label">Featured Orgs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">&#10022;</span>
+                    <span>North Alabama Community Hub</span>
+                    <p>All rights reserved to James Clemens High School TSA 2026.</p>
+                </div>
+                <p>Serving Madison, Huntsville, Decatur, and communities across Northern Alabama.</p>
+                <p class="footer-note">Data sourced from Every.org Nonprofit Search and community submissions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
 </body>
 </html>
