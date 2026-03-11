@@ -1043,9 +1043,22 @@ a:hover {
 }
 
 .loading {
-    text-align: center;
-    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
     color: var(--text-muted);
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 300px;
+    text-align: center;
+}
+
+.loading p {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: var(--text-light);
 }
 
 /* Submit Section */
@@ -1336,32 +1349,6 @@ a:hover {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* Toast */
-.toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--primary);
-    color: var(--color-surface);
-    padding: 18px 28px;
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-lg);
-    z-index: 10000;
-    animation: toast-slide 0.4s ease;
-    font-weight: 500;
-}
-
-@keyframes toast-slide {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 
 /* Mobile Responsive */
