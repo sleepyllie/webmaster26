@@ -236,7 +236,6 @@ $(document).ready(function() {
         currentQuery = $('#search-input').val().trim();
         currentPage = 0;
         loadResources();
-        if (currentQuery) showToast('Searching for "'+currentQuery+'"...','info');
     }
 
     function loadResources(append) {
