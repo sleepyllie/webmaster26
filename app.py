@@ -35,11 +35,17 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 # File paths
 # ---------------------------------------------------------------------------
 IS_VERCEL = os.environ.get("VERCEL", False)
-DATA_DIR = "/tmp" if IS_VERCEL else os.path.join(os.path.dirname(__file__), "data")
-USER_FILE    = os.path.join(DATA_DIR, "user_resources.json")
-SPOTS_FILE   = os.path.join(DATA_DIR, "spotlights.json")
-CONTACT_FILE = os.path.join(DATA_DIR, "contact_messages.json")
-CACHE_FILE   = os.path.join(DATA_DIR, "description_cache.json")
+BASE_DIR = os.path.dirname(__file__)
+READ_DATA_DIR = os.path.join(BASE_DIR, "data")  # For reading seed data (spotlights, etc.)
+WRITE_DATA_DIR = "/tmp" if IS_VERCEL else os.path.join(BASE_DIR, "data")  # For writing cache
+
+# Read-only files (shipped with app)
+SPOTS_FILE = os.path.join(READ_DATA_DIR, "spotlights.json")
+
+# Writable files (cache, user submissions)
+USER_FILE = os.path.join(WRITE_DATA_DIR, "user_resources.json")
+CONTACT_FILE = os.path.join(WRITE_DATA_DIR, "contact_messages.json")
+CACHE_FILE = os.path.join(WRITE_DATA_DIR, "description_cache.json")
 
 # ---------------------------------------------------------------------------
 # JSON helpers
@@ -937,6 +943,7 @@ if __name__ == "__main__":
     print("\n  Open http://localhost:5000 in your browser.\n")
     
     app.run(debug=True, host="0.0.0.0", port=5000, use_reloader=False)
+
 
 
 
