@@ -34,7 +34,8 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 # ---------------------------------------------------------------------------
 # File paths
 # ---------------------------------------------------------------------------
-DATA_DIR     = os.path.join(os.path.dirname(__file__), "data")
+IS_VERCEL = os.environ.get("VERCEL", False)
+DATA_DIR = "/tmp" if IS_VERCEL else os.path.join(os.path.dirname(__file__), "data")
 USER_FILE    = os.path.join(DATA_DIR, "user_resources.json")
 SPOTS_FILE   = os.path.join(DATA_DIR, "spotlights.json")
 CONTACT_FILE = os.path.join(DATA_DIR, "contact_messages.json")
@@ -51,9 +52,12 @@ def read_json(path):
         return json.load(f)
 
 def write_json(path, data):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
-        json.dump(data, f, indent=2)
+    try:
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as f:
+            json.dump(data, f, indent=2)
+    except Exception as e:
+        print(f"[Write] Could not write to {path}: {e}")
 
 # Description cache for AI-generated descriptions
 _description_cache = {}
@@ -933,5 +937,6 @@ if __name__ == "__main__":
     print("\n  Open http://localhost:5000 in your browser.\n")
     
     app.run(debug=True, host="0.0.0.0", port=5000, use_reloader=False)
+
 
 
