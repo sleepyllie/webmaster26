@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Food Bank of North Alabama",
+    "category": "Food & Agriculture",
+    "description": "Serving Madison, Huntsville, and surrounding counties with food assistance programs, mobile pantries, and nutrition education for families in need throughout the Tennessee Valley.",
+    "address": "130 Howe Drive, Huntsville, AL 35801",
+    "contact": "(256) 539-2256",
+    "website": "https://foodbanknorthal.org",
+    "featured": true
+  },
+  {
+    "name": "Habitat for Humanity of Madison County",
+    "category": "Housing & Shelter",
+    "description": "Building affordable homes and providing home repair services for families throughout Madison County. They also operate a ReStore thrift store to support their building programs.",
+    "address": "311 Oakwood Ave NW, Huntsville, AL 35811",
+    "contact": "(256) 534-5940",
+    "website": "https://www.habitatmadison.org/",
+    "featured": true
+  },
+  {
+    "name": "United Way of Madison County",
+    "category": "Human Services",
+    "description": "Connecting North Alabama residents with essential services including education support, financial stability programs, and health resources. Dial 211 for immediate assistance finding local help.",
+    "address": "102 Longwood Dr SW, Huntsville, AL 35801",
+    "contact": "(256) 536-0745",
+    "website": "https://uwmadisoncounty.org/",
+    "featured": true
+  }
+]
