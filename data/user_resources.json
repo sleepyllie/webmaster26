@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Sunrise Food Bank",
+    "category": "Food & Agriculture",
+    "description": "This resource offers food assistance to families in the Madison area.",
+    "contact": "(123) 555-4356",
+    "phone": "(123) 555-4356",
+    "address": "123 Main Street, Madison, AL",
+    "website": "",
+    "source": "user"
+  },
+  {
+    "name": "Madison City Schools Foundation",
+    "category": "Education",
+    "description": "Supporting students and teachers across Madison City Schools through grants, scholarships, and educational programs.",
+    "contact": "(256) 464-8370",
+    "phone": "(256) 464-8370",
+    "address": "211 Celtic Drive, Madison, AL 35758",
+    "website": "https://madisoncityschoolsfoundation.org",
+    "source": "user"
+  },
+  {
+    "name": "Crisis Services of North Alabama",
+    "category": "Mental Health",
+    "description": "Providing 24/7 crisis intervention, counseling services, and support for individuals facing mental health emergencies in North Alabama.",
+    "contact": "(256) 716-1000",
+    "phone": "(256) 716-1000",
+    "address": "2500 Clinton Ave W, Huntsville, AL 35805",
+    "website": "https://csna.org",
+    "source": "user"
+  },
+  {
+    "name": "Decatur Morgan Hospital Community Health",
+    "category": "Healthcare",
+    "description": "Free and low-cost health screenings, wellness programs, and community health education serving Decatur and Morgan County residents.",
+    "contact": "(256) 341-2000",
+    "phone": "(256) 341-2000",
+    "address": "1201 7th Street SE, Decatur, AL 35601",
+    "website": "https://decaturgeneral.org",
+    "source": "user"
+  },
+  {
+    "name": "Boys & Girls Clubs of North Alabama",
+    "category": "Youth Development",
+    "description": "After-school and summer programs for youth ages 6-18 including tutoring, sports, arts, and leadership development across multiple locations.",
+    "contact": "(256) 539-5765",
+    "phone": "(256) 539-5765",
+    "address": "800 St. Clair Ave SW, Huntsville, AL 35801",
+    "website": "https://bgcnorthal.com",
+    "source": "user"
+  }
+]
