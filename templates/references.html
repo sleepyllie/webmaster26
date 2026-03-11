@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo References | North Alabama Community Resource Hub</title>
+    <meta name="description" content="Photo credits and licensing information for images used on the North Alabama Community Resource Hub.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <style>
+        .references-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .references-hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 16px;
+        }
+        
+        .references-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .references-section {
+            padding: 80px 20px;
+            background: var(--color-bg);
+        }
+        
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .reference-card {
+            background: var(--color-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .reference-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        
+        .reference-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .reference-card-content {
+            padding: 24px;
+        }
+        
+        .reference-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        
+        .reference-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .reference-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .reference-meta strong {
+            color: var(--text);
+        }
+        
+        .license-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+        
+        .license-info {
+            background: var(--color-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin-top: 60px;
+        }
+        
+        .license-info h3 {
+            font-family: var(--font-heading);
+            margin-bottom: 16px;
+        }
+        
+        .license-info p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        
+        .license-info a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: gap 0.3s ease;
+        }
+        
+        .back-link:hover {
+            gap: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <span class="logo-icon">&#10022;</span>
+                    <h1>Community Hub</h1>
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="/">Home</a>
+                    <a href="/learn">Learn</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/references" class="active">References</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="references-hero">
+        <div class="container">
+            <h1 style="color: aliceblue;">Photo References</h1>
+            <p>All images used on this website are properly licensed. Below you'll find credits and licensing information for each photo.</p>
+        </div>
+    </section>
+
+    <!-- References -->
+    <section class="references-section">
+        <div class="container">
+            <a href="/" class="back-link">&#8592; Back to Home</a>
+            
+            <div class="references-grid">
+                <!-- Big Spring Park / Main Hero Image -->
+                <div class="reference-card">
+                    <img src="/static/images/bigspring.jpg" alt="Big Spring Park, Huntsville">
+                    <div class="reference-card-content">
+                        <h3>Big Spring Park, Huntsville</h3>
+                        <p>Downtown Huntsville view featuring the iconic red bridge over Big Spring lagoon with city buildings in background.</p>
+                        <div class="reference-meta">
+                            <p><strong>Source:</strong> Wikimedia Commons</p>
+                            <p><strong>Photographer:</strong> AquilaMMXI</p>
+                            <p><strong>Original URL:</strong> <a href="https://commons.wikimedia.org/wiki/File:Big_Spring_Park_overlook.jpg" target="_blank" rel="noopener">https://commons.wikimedia.org/wiki/Main_Page</a></p>
+                        </div>
+                        <span class="license-badge">Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</span>
+                    </div>
+                </div>
+                
+                <!-- U.S. Space & Rocket Center -->
+                <div class="reference-card">
+                    <img src="/static/images/space_center.jpg" alt="Space and Rocket Center">
+                    <div class="reference-card-content">
+                        <h3>U.S. Space & Rocket Center</h3>
+                        <p>Saturn V rocket display at the U.S. Space & Rocket Center in Huntsville, Alabama - home of Space Camp.</p>
+                        <div class="reference-meta">
+                            <p><strong>Source:</strong> Unsplash</p>
+                            <p><strong>Photographer:</strong> Kae Anderson</p>
+                            <p><strong>Original URL:</strong> <a href="https://unsplash.com/photos/white-concrete-tower-under-blue-sky-during-daytime-3PW2PjUjJtc" target="_blank" rel="noopener">unsplash.com</a></p>
+                        </div>
+                        <span class="license-badge">Unsplash License (Free)</span>
+                    </div>
+                </div>
+                
+                <!-- Monte Sano -->
+                <div class="reference-card">
+                    <img src="/static/images/montesano.jpg" alt="Forest trail">
+                    <div class="reference-card-content">
+                        <h3>Monte Sano State Park</h3>
+                        <p>Representative image of hiking trails similar to those found at Monte Sano State Park overlooking Huntsville.</p>
+                        <div class="reference-meta">
+                            <p><strong>Source:</strong> Wikimedia Commons</p>
+                            <p><strong>Photographer:</strong> dmtilley</p>
+                            <p><strong>Original URL:</strong> <a href="https://commons.wikimedia.org/wiki/File:Monte_Sano_State_Park_Overlook_-_panoramio.jpg" target="_blank" rel="noopener">https://commons.wikimedia.org/wiki/Main_Page</a></p>
+                        </div>
+                        <span class="license-badge">Creative Commons Attribution 3.0 (CC BY 3.0)</span>
+                    </div>
+                </div>
+                
+                <!-- Downtown  -->
+                <div class="reference-card">
+                    <img src="/static/images/downtown.jpg" alt="Downtown">
+                    <div class="reference-card-content">
+                        <h3>Downtown Huntsville</h3>
+                        <p>Stock image showing downtown Huntsville. </p>
+                        <div class="reference-meta">
+                            <p><strong>Source:</strong> Wikimedia Commons</p>
+                            <p><strong>Photographer:</strong> Bren.persing</p>
+                            <p><strong>Original URL:</strong> <a href="https://upload.wikimedia.org/wikipedia/commons/e/e5/Skyline_of_Huntsville.jpg" target="_blank" rel="noopener">https://commons.wikimedia.org/wiki/Main_Page</a></p>
+                        </div>
+                        <span class="license-badge">Creative Commons Attribution 3.0 (CC BY 3.0)</span>
+                    </div>
+                </div>
+
+                <!-- Shopping  -->
+                <div class="reference-card">
+                    <img src="/static/images/bridgestreet.jpg" alt="Shopping">
+                    <div class="reference-card-content">
+                        <h3>Bridge Street Town Center</h3>
+                        <p>Stock image showing downtown Huntsville. </p>
+                        <div class="reference-meta">
+                            <p><strong>Source:</strong> Flickr</p>
+                            <p><strong>Photographer:</strong> ralphandjenny</p>
+                            <p><strong>Original URL:</strong> <a href="" target="_blank" rel="noopener">https://www.flickr.com/photos/ralphandjenny/2710441766</a></p>
+                        </div>
+                        <span class="license-badge">Creative Commons BY-NC 2.0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- License Information -->
+            <div class="license-info">
+                <h3>About Image Licensing</h3>
+                <p>All images used on this website are sourced from platforms that provide free-to-use images under permissive licenses:</p>
+                <ul style="margin: 16px 0; padding-left: 20px; color: var(--text-muted); line-height: 1.8;">
+                    <li><strong>Flickr License:</strong> Photos are All Rights Reserved unless specified by author.  <a href="https://pixabay.com/service/license/" target="_blank" rel="noopener">Learn more</a></li>
+                    <li><strong>Unsplash License:</strong> Free to use for any purpose. No permission needed. <a href="https://unsplash.com/license" target="_blank" rel="noopener">Learn more</a></li>
+                    <li><strong>Creative Commons (CC BY 3.0):</strong> Public domain dedication. Free for any use. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">Learn more</a></li>
+                </ul>
+                <p>While attribution is not legally required for these licenses, we choose to credit photographers to recognize their contributions to freely available visual content.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">&#10022;</span>
+                    <span>North Alabama Community Hub</span>
+                </div>
+                <p>Serving Madison, Huntsville, Decatur, and communities across Northern Alabama.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
