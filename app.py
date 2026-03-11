@@ -9,15 +9,6 @@ APIs used:
   - AI Description Generation (Groq — FREE, for enriching sparse data)
   - ProPublica Nonprofit Explorer (nonprofits — no key needed)
   - Pinned seed data (guaranteed local fallback)
-
-Setup:
-  1. Get a free Geoapify key at https://myprojects.geoapify.com
-  2. Get a FREE Groq API key at https://console.groq.com (for AI descriptions)
-  3. Create a .env file:
-       GEOAPIFY_KEY=your_key_here
-       GROQ_API_KEY=your_key_here
-  4. pip install python-dotenv requests flask
-  5. python app.py  →  open http://localhost:5000
 """
 
 from flask import Flask, render_template, request, jsonify
@@ -37,8 +28,8 @@ app = Flask(__name__,
 # ---------------------------------------------------------------------------
 # API Keys (hardcoded)
 # ---------------------------------------------------------------------------
-GEOAPIFY_KEY = "ce6c5b83304a4da1aa1bf582a311a252"
-GROQ_API_KEY = "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"
+GEOAPIFY_KEY = GEOAPIFY_KEY
+GROQ_API_KEY = GROQ_API_KEY
 
 # ---------------------------------------------------------------------------
 # File paths
@@ -942,3 +933,4 @@ if __name__ == "__main__":
     print("\n  Open http://localhost:5000 in your browser.\n")
     
     app.run(debug=True, host="0.0.0.0", port=5000, use_reloader=False)
+
