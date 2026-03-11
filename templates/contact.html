@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | North Alabama Community Resource Hub</title>
+    <meta name="description" content="Get in touch with the North Alabama Community Resource Hub team.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .contact-hero h1 {
+            font-family: var(--font-heading);
+            color: aliceblue;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 16px;
+        }
+        
+        .contact-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-section {
+            padding: 80px 20px;
+            background: var(--color-bg);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
+        .contact-form-card {
+            background: var(--color-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 40px;
+        }
+        
+        .contact-form-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .contact-form-card > p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--color-bg);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .sidebar-card {
+            background: var(--color-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 30px;
+        }
+        
+        .sidebar-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #EA4335;
+            color: white;
+            padding: 14px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .email-btn:hover {
+            background: #d33426;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(234, 67, 53, 0.3);
+        }
+        
+        .email-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .success-message {
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: gap 0.3s ease;
+        }
+        
+        .back-link:hover {
+            gap: 12px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+        
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .info-list .icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <span class="logo-icon">&#10022;</span>
+                    <h1>Community Hub</h1>
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="/">Home</a>
+                    <a href="/learn">Learn</a>
+                    <a href="/contact" class="active">Contact</a>
+                    <a href="/references">References</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Have questions, suggestions, or feedback? We'd love to hear from you. Reach out through the form below or email us directly.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <a href="/" class="back-link">&#8592; Back to Home</a>
+            
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                    
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-name">Your Name *</label>
+                                <input type="text" id="contact-name" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email Address *</label>
+                                <input type="email" id="contact-email" name="email" required placeholder="john@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-subject">Subject *</label>
+                            <select id="contact-subject" name="subject" required>
+                                <option value="">Select a subject...</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Resource Suggestion">Resource Suggestion</option>
+                                <option value="Report an Issue">Report an Issue</option>
+                                <option value="Partnership Opportunity">Partnership Opportunity</option>
+                                <option value="Feedback">Feedback</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-message">Your Message *</label>
+                            <textarea id="contact-message" name="message" required placeholder="Type your message here..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">Send Message</button>
+                        
+                        <div id="contact-success" class="success-message">
+                            <strong>Message sent!</strong> Thank you for reaching out. We'll review your message and get back to you soon.
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="contact-sidebar">
+                    <!-- Email Directly -->
+                    <div class="sidebar-card">
+                        <h3>
+                            <span>&#9993;</span>
+                            Email Directly
+                        </h3>
+                        <p>Prefer to use your own email client? Click below to open Gmail and send us a message directly.</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=communityresourcehub@gmail.com&su=Community%20Hub%20Inquiry" target="_blank" rel="noopener" class="email-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            Open in Gmail
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Info -->
+                    <div class="sidebar-card">
+                        <h3>
+                            <span>&#8505;</span>
+                            Quick Info
+                        </h3>
+                        <ul class="info-list">
+                            <li>
+                                <span class="icon">&#128205;</span>
+                                <span>Serving Madison, Huntsville, Decatur, and Northern Alabama</span>
+                            </li>
+                            <li>
+                                <span class="icon">&#128337;</span>
+                                <span>We typically respond within 24-48 hours</span>
+                            </li>
+                            <li>
+                                <span class="icon">&#128100;</span>
+                                <span>Maintained by community volunteers</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- For TSA Testers -->
+                    <div class="sidebar-card" style="border-color: var(--primary); background: rgba(37, 99, 235, 0.03);">
+                        <h3>
+                            <span>&#128274;</span>
+                            Admin Access
+                        </h3>
+                        <p>TSA testers and administrators can view submitted messages through the admin panel.</p>
+                        <a href="/admin" class="btn btn-outline" style="width: 100%; text-align: center;">Go to Admin Panel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">&#10022;</span>
+                    <span>North Alabama Community Hub</span>
+                </div>
+                <p>Serving Madison, Huntsville, Decatur, and communities across Northern Alabama.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#contact-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                var formData = {
+                    name: $('#contact-name').val(),
+                    email: $('#contact-email').val(),
+                    subject: $('#contact-subject').val(),
+                    message: $('#contact-message').val()
+                };
+                
+                // Send to backend
+                $.ajax({
+                    url: '/api/contact/submit',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(response) {
+                        $('#contact-success').addClass('show');
+                        $('#contact-form')[0].reset();
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(function() {
+                            $('#contact-success').removeClass('show');
+                        }, 5000);
+                    },
+                    error: function(xhr) {
+                        alert('Error sending message. Please try again.');
+                    }
+                });
+            });
+            
+            // Mobile menu
+            $('#mobile-menu-btn').on('click', function() {
+                $(this).toggleClass('active');
+                $('#nav').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
