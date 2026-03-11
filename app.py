@@ -28,8 +28,8 @@ app = Flask(__name__,
 # ---------------------------------------------------------------------------
 # API Keys (hardcoded)
 # ---------------------------------------------------------------------------
-GEOAPIFY_KEY = GEOAPIFY_KEY
-GROQ_API_KEY = GROQ_API_KEY
+GEOAPIFY_KEY = os.getenv("GEOAPIFY_KEY", "")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 
 # ---------------------------------------------------------------------------
 # File paths
@@ -933,4 +933,5 @@ if __name__ == "__main__":
     print("\n  Open http://localhost:5000 in your browser.\n")
     
     app.run(debug=True, host="0.0.0.0", port=5000, use_reloader=False)
+
 
