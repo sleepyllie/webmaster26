@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn About Northern Alabama | Community Resource Hub</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/learn.css') }}">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <span class="logo-icon">&#10022;</span>
+                    <h1>Community Hub</h1>
+                </a>
+                <nav class="nav" id="nav">
+                    <a href="/">Home</a>
+                    <a href="/learn" class="active">Learn</a>
+                    <a href="/#spotlights">Spotlights</a>
+                    <a href="/#directory">Directory</a>
+                    <a href="/#submit">Submit</a>
+                    <a href="/references">References</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero learn-hero">
+        <div class="hero-background">
+            <img src="{{ url_for('static', filename='images/bigsprings.jpg') }}" alt="Big Spring Park, Huntsville Alabama" class="hero-bg-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-shapes">
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+        </div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="container hero-content">
+            <h2 class="hero-title aurora-text">
+                <span class="aurora-text-content">Discover Northern Alabama</span>
+            </h2>
+            <p class="hero-subtitle float-text">Where Innovation Meets Southern Charm</p>
+            
+            <!-- Bouncing Scroll Arrow -->
+            <a href="#highlights" class="scroll-arrow" id="scroll-arrow" aria-label="Scroll down">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights-section" id="highlights">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Explore the Region</span>
+                <h2 class="section-title">Northern Alabama Highlights</h2>
+                <p class="section-subtitle">From rocket science to southern hospitality, discover what makes our community unique.</p>
+            </div>
+
+            <div class="highlights-grid">
+                <!-- Card 1: Space & Rocket Center -->
+                <div class="highlight-card highlight-card-large">
+                    <div class="highlight-card-image">
+                        <img src="/static/images/space_center.jpg" alt="U.S. Space & Rocket Center">
+                        <div class="highlight-card-overlay"></div>
+                    </div>
+                    <div class="highlight-card-content">
+                        <span class="highlight-card-tag">Must Visit</span>
+                        <h3>U.S. Space & Rocket Center</h3>
+                        <p>Home to Space Camp and the largest collection of rockets and space memorabilia on Earth. Experience simulators, see actual spacecraft, and learn about NASA's history right here in Huntsville - the Rocket City.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Big Spring Park -->
+                <div class="highlight-card">
+                    <div class="highlight-card-image">
+                        <img src="/static/images/bigspring.jpg" alt="Big Spring Park">
+                        <div class="highlight-card-overlay"></div>
+                    </div>
+                    <div class="highlight-card-content">
+                        <span class="highlight-card-tag">Nature</span>
+                        <h3>Big Spring Park</h3>
+                        <p>A beautiful urban oasis in downtown Huntsville featuring walking trails, duck ponds, and scenic views.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Monte Sano -->
+                <div class="highlight-card">
+                    <div class="highlight-card-image">
+                        <img src="/static/images/montesano.jpg" alt="Monte Sano State Park">
+                        <div class="highlight-card-overlay"></div>
+                    </div>
+                    <div class="highlight-card-content">
+                        <span class="highlight-card-tag">Outdoors</span>
+                        <h3>Monte Sano State Park</h3>
+                        <p>Over 2,000 acres of hiking trails, stunning overlooks, and natural beauty atop Monte Sano Mountain.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Downtown Huntsville -->
+                <div class="highlight-card">
+                    <div class="highlight-card-image">
+                        <img src="/static/images/downtown.jpg" alt="Downtown Huntsville">
+                        <div class="highlight-card-overlay"></div>
+                    </div>
+                    <div class="highlight-card-content">
+                        <span class="highlight-card-tag">Culture</span>
+                        <h3>Downtown Huntsville</h3>
+                        <p>Historic courthouse square, local restaurants, craft breweries, and a thriving arts scene.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Bridge Street -->
+                <div class="highlight-card">
+                    <div class="highlight-card-image">
+                        <img src="/static/images/bridgestreet.jpg" alt="Bridge Street Town Centre">
+                        <div class="highlight-card-overlay"></div>
+                    </div>
+                    <div class="highlight-card-content">
+                        <span class="highlight-card-tag">Shopping</span>
+                        <h3>Bridge Street Town Centre</h3>
+                        <p>Premier outdoor shopping and entertainment destination with shops, dining, and a movie theater.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="500000">500,000+</span>
+                    <span class="stat-label">Metro Population</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Top 10</span>
+                    <span class="stat-label">Best Places to Live</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">#1</span>
+                    <span class="stat-label">Tech Hub in Alabama</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Local Nonprofits</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-us-section" id="about-us">
+        <div class="container">
+            <div class="about-us-content">
+                <div class="about-us-text">
+                    <span class="section-label">Our Story</span>
+                    <h2 class="section-title">Why We Started This Hub</h2>
+                    
+                    <!-- USER CAN INSERT THEIR OWN TEXT HERE -->
+                    <div class="about-us-body">
+                        <p>
+                            <!-- INSERT YOUR TEXT HERE -->
+                            We created the Northern Alabama Community Resource Hub because we believe every resident deserves easy access to the support services, nonprofits, and community programs that make our region stronger.
+                        </p>
+                        <p>
+                            <!-- INSERT YOUR TEXT HERE -->
+                            Growing up in Madison, we saw firsthand how difficult it can be to find the right resources when you need them most. Whether it's food assistance, educational programs, healthcare services, or community events - the information was scattered across dozens of websites and social media pages.
+                        </p>
+                        <p>
+                            <!-- INSERT YOUR TEXT HERE -->
+                            Our mission is simple: connect Northern Alabama residents with the organizations and services that can help them thrive. By bringing everything together in one searchable, community-driven directory, we hope to make it easier for everyone to find the support they need.
+                        </p>
+                    </div>
+
+                    <div class="about-us-signature">
+                        <p>- The North Alabama Community Resource Hub Team</p>
+                    </div>
+                </div>
+                
+                <div class="about-us-visual">
+                    <div class="about-us-card">
+                        <div class="about-card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h4>Our Mission</h4>
+                        <p>Making community resources accessible to everyone in Northern Alabama.</p>
+                    </div>
+                    <div class="about-us-card">
+                        <div class="about-card-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h4>Community First</h4>
+                        <p>Built by locals, for locals. Your submissions help grow our directory.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Explore?</h2>
+                <p>Browse our directory of local resources or submit a new organization.</p>
+                <div class="cta-buttons">
+                    <a href="/#directory" class="btn btn-primary btn-large">Browse Directory</a>
+                    <a href="/#submit" class="btn btn-outline btn-large">Submit a Resource</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">&#10022;</span>
+                        <h2>Community Hub</h2>
+                    </a>
+                    <p>Connecting Northern Alabama residents with local resources, services, and opportunities.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigate</h4>
+                        <a href="/">Home</a>
+                        <a href="/learn">About the Area</a>
+                        <a href="/#directory">Resource Directory</a>
+                        <a href="/#submit">Submit Resource</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Communities</h4>
+                        <span>Madison</span>
+                        <span>Huntsville</span>
+                        <span>Decatur</span>
+                        <span>Athens</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Made with care for Northern Alabama</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script>
+        // Smooth scroll for arrow
+        $('#scroll-arrow').on('click', function(e) {
+            e.preventDefault();
+            const target = $(this).attr('href');
+            document.querySelector(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Mobile menu toggle
+        $('#mobile-menu-btn').on('click', function() {
+            $(this).toggleClass('active');
+            $('#nav').toggleClass('active');
+        });
+    </script>
+</body>
+</html>
